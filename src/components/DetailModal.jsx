@@ -22,10 +22,7 @@ export default function Modal({ onClose }) {
       <div className="flex gap-4 justify-between mt-2">
         <button //check if DeleteModal is open and disable closing lower DetailModal
           onClick={() => {
-            if (showDelModal) {
-            } else {
-              onClose();
-            }
+            showDelModal ? null : onClose();
           }}
         >
           Close
