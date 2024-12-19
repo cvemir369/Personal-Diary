@@ -2,7 +2,9 @@ import AddCardButton from "./AddCardButton";
 import SmallCard from "./SmallCard";
 import EditModal from "./editModal";
 
-function Container() {
+function Container({ storedItems, onAdd }) {
+ 
+
   return (
     <>
       <AddCardButton />
