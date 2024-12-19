@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 import initializeFakeData from "./fakeData";
 import Container from "./components/Container";
 import EditModal from "./components/editModal";
-import ViewModal from "./components/ViewModal";
-
 
 function App() {
   initializeFakeData();
@@ -63,11 +61,9 @@ function App() {
 
   return (
     <>
-      <Container storedItems={storedItems} onAdd={handleAdd} />
+      <Container storedItems={storedItems} onAdd={handleAdd} onEdit={handleEdit} />
       {isEditVisible && <EditModal item={card} onClose={handleclick} onSave={handleSave}/>}
       {isAddVisible && <EditModal onClose={handleclick} onSave={handleSave}/>}
-      <ViewModal onEdit={handleEdit} />
-
     </>
   );
 }
