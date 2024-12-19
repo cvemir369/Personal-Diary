@@ -3,11 +3,13 @@ import "./DeleteModal.css";
 export default function ModalDelete({ onClose }) {
   return (
     <div className="deleteModal">
-      <h2 className="text-2xl font-bold">Are you sure?</h2>
+      <h2 className="del-modal-h2">Are you sure?</h2>
       <p>This will permanently delete this entry.</p>
-      <div className="flex gap-4 justify-center mt-2">
-        <button>Delete</button>
-        <button onClick={onClose}>Cancel</button>
+      <div className="del-modal-bnt-container">
+        <button className="btn-ced">Delete</button>
+        <button className="btn-ced" onClick={onClose}>
+          Cancel
+        </button>
       </div>
     </div>
   );

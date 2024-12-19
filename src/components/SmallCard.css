@@ -1,0 +1,19 @@
+.cards-container {
+  @apply flex flex-wrap gap-5 justify-center m-5;
+}
+
+.card-btn {
+  @apply flex flex-col gap-2 w-[300px] justify-evenly shadow-lg bg-white rounded-2xl p-5 hover:shadow-orange-200;
+}
+
+.card-img {
+  @apply mb-2 object-cover rounded-2xl w-full max-h-72;
+}
+
+.card-title {
+  @apply text-2xl font-bold;
+}
+
+.card-date {
+  @apply text-sm;
+}

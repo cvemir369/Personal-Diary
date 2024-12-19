@@ -2,6 +2,30 @@
   @apply flex flex-col gap-2 max-w-[80vw] h-auto justify-evenly shadow-2xl bg-white rounded-2xl p-5 mx-auto absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
 }
 
-button {
+.btn-ced {
   @apply hover:underline;
+}
+
+.detail-img {
+  @apply mb-2 object-cover rounded-2xl w-full max-h-96;
+}
+
+.detail-title {
+  @apply text-2xl font-bold;
+}
+
+.detail-date {
+  @apply text-sm;
+}
+
+.detail-desc {
+  @apply text-justify;
+}
+
+.detail-btn-container {
+  @apply flex gap-4 justify-between mt-2;
+}
+
+.bnt-ed-container {
+  @apply flex gap-4 text-sm;
 }
