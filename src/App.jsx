@@ -5,6 +5,7 @@ import Container from "./components/Container";
 import EditModal from "./components/editModal";
 import ViewModal from "./components/ViewModal";
 
+
 function App() {
   initializeFakeData();
   const [isEditVisible, setEditlVisible] = useState(false);
@@ -66,6 +67,7 @@ function App() {
       {isEditVisible && <EditModal item={card} onClose={handleclick} onSave={handleSave}/>}
       {isAddVisible && <EditModal onClose={handleclick} onSave={handleSave}/>}
       <ViewModal onEdit={handleEdit} />
+
     </>
   );
 }

@@ -12,4 +12,3 @@ function initializeFakeData() {
 }
 
 export default initializeFakeData;
-
