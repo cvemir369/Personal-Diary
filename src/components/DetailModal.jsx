@@ -20,7 +20,16 @@ export default function Modal({ onClose }) {
         quo.
       </p>
       <div className="flex gap-4 justify-between mt-2">
-        <button onClick={onClose}>Close</button>
+        <button //check if DeleteModal is open and disable closing lower DetailModal
+          onClick={() => {
+            if (showDelModal) {
+            } else {
+              onClose();
+            }
+          }}
+        >
+          Close
+        </button>
         <div className="flex gap-4 text-sm">
           <button>Edit</button>
           <button onClick={() => setShowDelModal(true)}>Delete</button>
