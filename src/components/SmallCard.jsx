@@ -3,19 +3,15 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import DetailModal from "./DetailModal";
 
-function SmallCard() {
-  const cards = JSON.parse(localStorage.getItem("myFakeData") || "[]");
+function SmallCard({ card, onEdit }) {
   const [showModal, setShowModal] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(null);
 
   const handleButtonClick = (card) => {
-    setSelectedCard(card);
     setShowModal(true);
   };
 
   return (
     <div className="cards-container">
-      {cards.map((card) => (
         <button
           key={card.id}
           onClick={() => handleButtonClick(card)}
@@ -25,12 +21,12 @@ function SmallCard() {
           <h2 className="card-title">{card.title}</h2>
           <p className="card-date">{card.date}</p>
         </button>
-      ))}
       {showModal &&
         createPortal(
           <DetailModal
-            card={selectedCard}
+            card={card}
             onClose={() => setShowModal(false)}
+            onEdit={onEdit}
           />,
           document.body
         )}

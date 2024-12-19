@@ -3,7 +3,7 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import ModalDelete from "./DeleteModal";
 
-export default function Modal({ onClose, card }) {
+export default function DetailModal({ onClose, card, onEdit }) {
   const [showDelModal, setShowDelModal] = useState(false);
 
   return (
@@ -22,7 +22,7 @@ export default function Modal({ onClose, card }) {
           Close
         </button>
         <div className="bnt-ed-container">
-          <button className="btn-ced">Edit</button>
+          <button className="btn-ced" onClick={() => {onEdit(card); onClose()}}>Edit</button>
           <button className="btn-ced" onClick={() => setShowDelModal(true)}>
             Delete
           </button>
