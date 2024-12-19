@@ -1,15 +1,13 @@
 import AddCardButton from "./AddCardButton";
 import SmallCard from "./SmallCard";
-import ViewModal from "./ViewModal";
-import EditModal from "./editModal";
 
-function Container() {
+function Container({ storedItems, onAdd }) {
+ 
+
   return (
     <>
     <AddCardButton />
     <SmallCard />
-    <EditModal />
-    <ViewModal />
     </>
   )
 }
