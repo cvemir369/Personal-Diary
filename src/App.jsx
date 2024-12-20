@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import initializeFakeData from "./fakeData";
 import Container from "./components/Container";
+import EditModal from "./components/EditModal"
 
 function App() {
   initializeFakeData();
@@ -12,8 +13,9 @@ function App() {
   );
   const [card, setCard] = useState({});
 
-  const handleclick = () => {
-    setEditlVisible(!isEditVisible);
+  const handleClose = () => {
+    setEditlVisible(false);
+    setaddVisible(false);
   };
 
   const handleAdd = () => {
@@ -62,17 +64,12 @@ function App() {
   console.log(storedItems);
 
   return (
-    <>
-      <Container
-        storedItems={storedItems}
-        onAdd={handleAdd}
-        onEdit={handleEdit}
-      />
-      {isEditVisible && (
-        <EditModal item={card} onClose={handleclick} onSave={handleSave} />
-      )}
-      {isAddVisible && <EditModal onClose={handleclick} onSave={handleSave} />}
-    </>
+    <div className="bg-[#E8E1D3] h-screen text-[#333] flex flex-col items-center">
+      <header className="pt-24 font-serif text-4xl mb-12" >My Personal Diary</header>
+      <Container storedItems={storedItems} onAdd={handleAdd} onEdit={handleEdit} onClose={handleClose} />
+      {isEditVisible && <EditModal item={card} onClose={handleClose} onSave={handleSave}/>}
+      {isAddVisible && <EditModal onClose={handleClose} onSave={handleSave}/>}
+    </div>
   );
 }
 
