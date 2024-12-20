@@ -1,10 +1,10 @@
 import AddCardButton from "./AddCardButton";
 import SmallCard from "./SmallCard";
 
-function Container({ storedItems, onAdd, onEdit }) {
+function Container({ storedItems, onAdd, onEdit, onClose }) {
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] gap-6 p-4">
-      <AddCardButton />
+    <div className="grid grid-cols-4 justify-between gap-5">
+      <AddCardButton onAdd={onAdd} onClose={onClose} />
       {storedItems.map((item) => (
         <SmallCard key={item.id} card={item} onEdit={onEdit} />
       ))}

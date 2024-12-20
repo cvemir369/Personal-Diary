@@ -11,7 +11,7 @@ function SmallCard({ card, onEdit }) {
   };
 
   return (
-    <div className="cards-container">
+    <>
         <button
           key={card.id}
           onClick={() => handleButtonClick(card)}
@@ -30,7 +30,7 @@ function SmallCard({ card, onEdit }) {
           />,
           document.body
         )}
-    </div>
+    </>
   );
 }
 
