@@ -1,14 +1,15 @@
 import "./App.css";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import initializeFakeData from "./fakeData";
 import Container from "./components/Container";
-import EditModal from "./components/editModal";
 
 function App() {
   initializeFakeData();
   const [isEditVisible, setEditlVisible] = useState(false);
-  const [isAddVisible, setaddVisible] = useState(false)
-  const [storedItems, setStoredItems] = useState(JSON.parse(localStorage.getItem("myFakeData")) || []);
+  const [isAddVisible, setaddVisible] = useState(false);
+  const [storedItems, setStoredItems] = useState(
+    JSON.parse(localStorage.getItem("myFakeData")) || []
+  );
   const [card, setCard] = useState({});
 
   const handleclick = () => {
@@ -16,27 +17,29 @@ function App() {
   };
 
   const handleAdd = () => {
-    setaddVisible(true)
-  }
+    setaddVisible(true);
+  };
 
   const handleEdit = (item) => {
     setEditlVisible(true);
     setCard(item);
-  }
+  };
 
   const handleSave = (newItem) => {
-
     if (!newItem.id) {
       newItem.id = storedItems.length + 1;
     }
 
     const isIdExist =
-      storedItems.findIndex((existingItem) => existingItem.id === newItem.id) >= 0;
+      storedItems.findIndex((existingItem) => existingItem.id === newItem.id) >=
+      0;
 
     let updatedItems;
     if (isIdExist) {
       updatedItems = storedItems.map((existingItem) =>
-        existingItem.id === newItem.id ? { ...existingItem, ...newItem } : existingItem
+        existingItem.id === newItem.id
+          ? { ...existingItem, ...newItem }
+          : existingItem
       );
     } else {
       updatedItems = [...storedItems, newItem];
@@ -56,14 +59,19 @@ function App() {
     localStorage.setItem("myFakeData", JSON.stringify(storedItems));
   }, [storedItems]);
 
-
-  console.log(storedItems)
+  console.log(storedItems);
 
   return (
     <>
-      <Container storedItems={storedItems} onAdd={handleAdd} onEdit={handleEdit} />
-      {isEditVisible && <EditModal item={card} onClose={handleclick} onSave={handleSave}/>}
-      {isAddVisible && <EditModal onClose={handleclick} onSave={handleSave}/>}
+      <Container
+        storedItems={storedItems}
+        onAdd={handleAdd}
+        onEdit={handleEdit}
+      />
+      {isEditVisible && (
+        <EditModal item={card} onClose={handleclick} onSave={handleSave} />
+      )}
+      {isAddVisible && <EditModal onClose={handleclick} onSave={handleSave} />}
     </>
   );
 }

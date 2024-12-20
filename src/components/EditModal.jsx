@@ -1,10 +1,10 @@
-import { useState } from "react"
+import { useState } from "react";
 
 function EditModal({ item = {}, onClose, onSave }) {
-  const [date, setDate] = useState(item.date || '');
-  const [img, setImg] = useState(item.img || '');
-  const [title, setTitle] = useState(item.title || '') ;
-  const [desc, setDesc] = useState(item.desc || '');
+  const [date, setDate] = useState(item.date || "");
+  const [img, setImg] = useState(item.img || "");
+  const [title, setTitle] = useState(item.title || "");
+  const [desc, setDesc] = useState(item.desc || "");
   const id = item.id || null;
 
   const newItem = {
@@ -12,8 +12,8 @@ function EditModal({ item = {}, onClose, onSave }) {
     date: date.trim(),
     img: img.trim(),
     title: title.trim(),
-    desc: desc.trim()
-  }
+    desc: desc.trim(),
+  };
 
   return (
     <>
@@ -42,7 +42,9 @@ function EditModal({ item = {}, onClose, onSave }) {
                     name="date"
                     className="input-style"
                     value={date}
-                    onChange={(event) => {setDate(event.target.value)}}
+                    onChange={(event) => {
+                      setDate(event.target.value);
+                    }}
                   />
                 </div>
                 <div>
@@ -56,7 +58,9 @@ function EditModal({ item = {}, onClose, onSave }) {
                     name="img"
                     className="input-style"
                     value={img}
-                    onChange={(event) => {setImg(event.target.value)}}
+                    onChange={(event) => {
+                      setImg(event.target.value);
+                    }}
                   />
                 </div>
               </div>
@@ -72,7 +76,9 @@ function EditModal({ item = {}, onClose, onSave }) {
                   name="title"
                   className="input-style"
                   value={title}
-                  onChange={(event) => {setTitle(event.target.value)}}
+                  onChange={(event) => {
+                    setTitle(event.target.value);
+                  }}
                 />
               </div>
 
@@ -87,7 +93,9 @@ function EditModal({ item = {}, onClose, onSave }) {
                   rows="5"
                   className="input-style"
                   value={desc}
-                  onChange={(event) => {setDesc(event.target.value)}}
+                  onChange={(event) => {
+                    setDesc(event.target.value);
+                  }}
                 ></textarea>
               </div>
 
