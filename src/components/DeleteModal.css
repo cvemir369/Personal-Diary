@@ -1,5 +1,9 @@
 .deleteModal {
-  @apply flex flex-col max-w-80 justify-evenly shadow-2xl bg-white rounded-xl p-5 mx-auto text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+  @apply fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50;
+}
+
+.deleteModalInner {
+  @apply bg-white p-6 rounded-lg shadow-lg w-80;
 }
 
 .del-modal-h2 {

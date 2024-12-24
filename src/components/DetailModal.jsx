@@ -8,24 +8,34 @@ export default function DetailModal({ onClose, card, onEdit }) {
 
   return (
     <div className="detailModal">
-      <img className="detail-img" src={card.img} alt="" />
-      <h2 className="detail-title">{card.title}</h2>
-      <p className="detail-date">{card.date}</p>
-      <p className="detail-desc">{card.desc}</p>
-      <div className="detail-btn-container">
-        <button
-          className="btn-ced"
-          onClick={() => {
-            showDelModal ? null : onClose();
-          }}
-        >
-          Close
-        </button>
-        <div className="bnt-ed-container">
-          <button className="btn-ced" onClick={() => {onEdit(card); onClose()}}>Edit</button>
-          <button className="btn-ced" onClick={() => setShowDelModal(true)}>
-            Delete
+      <div className="detailModalInner">
+        <img className="detail-img" src={card.img} alt="" />
+        <h2 className="detail-title">{card.title}</h2>
+        <p className="detail-date">{card.date}</p>
+        <p className="detail-desc">{card.desc}</p>
+        <div className="detail-btn-container">
+          <button
+            className="btn-ced"
+            onClick={() => {
+              showDelModal ? null : onClose();
+            }}
+          >
+            Close
           </button>
+          <div className="bnt-ed-container">
+            <button
+              className="btn-ced"
+              onClick={() => {
+                onEdit(card);
+                onClose();
+              }}
+            >
+              Edit
+            </button>
+            <button className="btn-ced" onClick={() => setShowDelModal(true)}>
+              Delete
+            </button>
+          </div>
         </div>
       </div>
       {showDelModal &&
