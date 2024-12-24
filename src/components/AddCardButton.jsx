@@ -8,8 +8,8 @@ function AddCardButton({ onAdd }) {
   };
 
   return (
-    <div className="cards-container">
-      <button onClick={() => {onAdd()}} className="card-btn">
+    <div className="">
+      <button onClick={() => {onAdd()}} className="card-add-btn">
         <div className="card-content">
           <h2 className="card-title">Add Diary Entry</h2>
           <p className="card-date">{getTodayDate()}</p>

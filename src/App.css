@@ -10,3 +10,12 @@
 .lable-style {
   @apply block text-lg font-medium text-gray-700
 }
+
+.homeHeader {
+  @apply pt-24 font-serif text-4xl mb-12
+}
+
+.appContainer {
+  @apply min-h-screen text-[#333] bg-[#E8E1D3] flex flex-col items-center pb-[100px]
+}
+
