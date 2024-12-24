@@ -1,118 +1,156 @@
-import { useState } from "react";
+import { format } from "date-fns";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import "./EditModal.css";
 
-function EditModal({ item = {}, onClose, onSave }) {
-  const [date, setDate] = useState(item.date || "");
-  const [img, setImg] = useState(item.img || "");
-  const [title, setTitle] = useState(item.title || "");
-  const [desc, setDesc] = useState(item.desc || "");
+import * as yup from "yup";
+
+function EditModal({ item = {}, onClose, onSave, storedItems }) {
   const id = item.id || null;
 
-  const newItem = {
-    id: id,
-    date: date.trim(),
-    img: img.trim(),
-    title: title.trim(),
-    desc: desc.trim(),
+  const existingDate = (date, id) => {
+    const foundItem = storedItems.find((item) => item.date === date);
+
+    if (!foundItem) {
+      return false;
+    }
+
+    return foundItem.id !== id;
+  };
+
+  const schema = yup.object({
+    date: yup
+      .string()
+      .test("date-taken", "This date is already taken", function (value) {
+        return !existingDate(value, id);
+      }),
+    img: yup.string().required("Image URL is required"),
+    title: yup.string().required("Title is required"),
+    desc: yup
+      .string()
+      .min(5, "Description must be at least 5 characters long")
+      .required("Description is required"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onTouched",
+    defaultValues: {
+      date: item.date || format(new Date(), "yyyy-MM-dd"),
+      img: item.img || "",
+      title: item.title || "",
+      desc: item.desc || "",
+    },
+  });
+
+  const onSubmit = (data) => {
+    const newItem = {
+      id: id,
+      ...data,
+    };
+
+    onSave(newItem);
+    onClose();
   };
 
   return (
-    <>
-      <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center ">
-        <div className="bg-white rounded-lg shadow-lg w-3/6 p-8">
-          <div className="px-6 py-4 flex justify-between items-center">
-            <h2 className="text-4xl font-semibold">New Diary Entry</h2>
-            <button
-              onClick={onClose}
-              className="text-gray-500 hover:text-gray-700"
-            >
-              &times;
-            </button>
-          </div>
-          <h2 className="px-6 pb-4 text-xl">Create a new diary entry</h2>
-          <div className="p-6">
-            <form>
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="date" className="lable-style">
-                    Date
-                  </label>
+    <div className="modalBody">
+      <div className="modalContainer">
+        <div className="modalHeader">
+          <h2 className="text-4xl">New Diary Entry</h2>
+          <button onClick={onClose} >
+            &times;
+          </button>
+        </div>
+        <div className="p-6">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit(onSubmit)(e);
+            }}
+            className="formGrid"
+          >
+            <div className="inputGroup">
+              <div className="fieldContainer">
+                <label htmlFor="date" className="lable-style">
+                  Date
                   <input
+                    {...register("date")}
                     type="date"
                     id="date"
                     name="date"
                     className="input-style"
-                    value={date}
-                    onChange={(event) => {
-                      setDate(event.target.value);
-                    }}
                   />
-                </div>
-                <div>
-                  <label htmlFor="img" className="lable-style">
-                    Img URL
-                  </label>
+                </label>
+                {errors.date && (
+                  <span className="error">{errors.date.message}</span>
+                )}
+              </div>
+              <div className="fieldContainer">
+                <label htmlFor="img" className="lable-style">
+                  Img URL
                   <input
-                    type="text"
-                    id="img"
-                    placeholder="Placeholder"
-                    name="img"
-                    className="input-style"
-                    value={img}
-                    onChange={(event) => {
-                      setImg(event.target.value);
-                    }}
-                  />
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <label htmlFor="title" className="lable-style">
-                  Title
-                </label>
-                <input
+                  {...register("img")}
                   type="text"
-                  id="title"
-                  placeholder="Placeholder"
-                  name="title"
+                  id="img"
+                  name="img"
                   className="input-style"
-                  value={title}
-                  onChange={(event) => {
-                    setTitle(event.target.value);
-                  }}
                 />
-              </div>
-
-              <div className="mb-6">
-                <label htmlFor="content" className="lable-style">
-                  Content
                 </label>
-                <textarea
-                  id="content"
-                  placeholder="Placeholder"
-                  name="content"
-                  rows="5"
-                  className="input-style"
-                  value={desc}
-                  onChange={(event) => {
-                    setDesc(event.target.value);
-                  }}
-                ></textarea>
+                {errors.img && (
+                  <span className="error">{errors.img.message}</span>
+                )}
               </div>
+            </div>
 
-              <div className="flex justify-center space-x-4">
-                <button
-                  onClick={() => onSave(newItem)}
-                  type="submit"
-                  className="px-4 py-2 bg-blue-600 text-white font-medium rounded-md"
-                >
-                  Add Entry
-                </button>
-              </div>
-            </form>
-          </div>
+            <div className="fieldContainer">
+              <label htmlFor="title" className="lable-style">
+                Title
+                <input
+                {...register("title")}
+                type="text"
+                id="title"
+                name="title"
+                className="input-style"
+              />
+              </label>
+              {errors.title && (
+                <span className="error">{errors.title.message}</span>
+              )}
+            </div>
+
+            <div className="fieldContainer">
+              <label htmlFor="desc" className="lable-style">
+                Description
+                <textarea
+                {...register("desc")}
+                id="desc"
+                name="desc"
+                rows="5"
+                className="input-style"
+              ></textarea>
+              </label>
+              {errors.desc && (
+                <span className="error">{errors.desc.message}</span>
+              )}
+            </div>
+
+            <div className="buttonContainer">
+              <button
+                type="submit"
+                className="submitButton"
+              >
+                Add Entry
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
