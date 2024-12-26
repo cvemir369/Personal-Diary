@@ -2,7 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import initializeFakeData from "./fakeData";
 import Container from "./components/Container";
-import EditModal from "./components/EditModal"
+import EditModal from "./components/EditModal";
 
 function App() {
   initializeFakeData();
@@ -25,6 +25,12 @@ function App() {
   const handleEdit = (item) => {
     setEditlVisible(true);
     setCard(item);
+  };
+
+  const handleDelete = (itemDel) => {
+    const updatedItems = storedItems.filter((item) => item.id !== itemDel.id);
+    localStorage.setItem("myFakeData", JSON.stringify(updatedItems));
+    setStoredItems(updatedItems);
   };
 
   const handleSave = (newItem) => {
@@ -61,14 +67,24 @@ function App() {
     localStorage.setItem("myFakeData", JSON.stringify(storedItems));
   }, [storedItems]);
 
-  console.log(storedItems);
+  // console.log(storedItems);
 
   return (
     <div className="bg-[#E8E1D3] h-screen text-[#333] flex flex-col items-center">
-      <header className="pt-24 font-serif text-4xl mb-12" >My Personal Diary</header>
-      <Container storedItems={storedItems} onAdd={handleAdd} onEdit={handleEdit} onClose={handleClose} />
-      {isEditVisible && <EditModal item={card} onClose={handleClose} onSave={handleSave}/>}
-      {isAddVisible && <EditModal onClose={handleClose} onSave={handleSave}/>}
+      <header className="pt-24 font-serif text-4xl mb-12">
+        My Personal Diary
+      </header>
+      <Container
+        storedItems={storedItems}
+        onAdd={handleAdd}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+        onClose={handleClose}
+      />
+      {isEditVisible && (
+        <EditModal item={card} onClose={handleClose} onSave={handleSave} />
+      )}
+      {isAddVisible && <EditModal onClose={handleClose} onSave={handleSave} />}
     </div>
   );
 }

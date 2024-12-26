@@ -1,9 +1,8 @@
 import "./DetailModal.css";
 import { useState } from "react";
-import { createPortal } from "react-dom";
 import ModalDelete from "./DeleteModal";
 
-export default function DetailModal({ onClose, card, onEdit }) {
+export default function DetailModal({ onClose, card, onEdit, onDelete }) {
   const [showDelModal, setShowDelModal] = useState(false);
 
   return (
@@ -38,11 +37,13 @@ export default function DetailModal({ onClose, card, onEdit }) {
           </div>
         </div>
       </div>
-      {showDelModal &&
-        createPortal(
-          <ModalDelete onClose={() => setShowDelModal(false)} />,
-          document.body
-        )}
+      {showDelModal && (
+        <ModalDelete
+          card={card}
+          onClose={() => setShowDelModal(false)}
+          onDelete={onDelete}
+        />
+      )}
     </div>
   );
 }

@@ -1,12 +1,17 @@
 import AddCardButton from "./AddCardButton";
 import SmallCard from "./SmallCard";
 
-function Container({ storedItems, onAdd, onEdit, onClose }) {
+function Container({ storedItems, onAdd, onEdit, onDelete, onClose }) {
   return (
     <div className="grid grid-cols-4 justify-between gap-5">
       <AddCardButton onAdd={onAdd} onClose={onClose} />
       {storedItems.map((item) => (
-        <SmallCard key={item.id} card={item} onEdit={onEdit} />
+        <SmallCard
+          key={item.id}
+          card={item}
+          onEdit={onEdit}
+          onDelete={onDelete}
+        />
       ))}
     </div>
   );
