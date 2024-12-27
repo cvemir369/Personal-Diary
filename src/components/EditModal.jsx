@@ -2,10 +2,9 @@ import { format } from "date-fns";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import "./EditModal.css";
-
 import * as yup from "yup";
 
-function EditModal({ item = {}, onClose, onSave, storedItems }) {
+function EditModal({ item = {}, onClose, onSave, storedItems, buttonName}) {
   const id = item.id || null;
 
   const existingDate = (date, id) => {
@@ -144,7 +143,7 @@ function EditModal({ item = {}, onClose, onSave, storedItems }) {
                 type="submit"
                 className="submitButton"
               >
-                Add Entry
+                {buttonName}
               </button>
             </div>
           </form>

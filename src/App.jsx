@@ -10,7 +10,6 @@ function App() {
     JSON.parse(localStorage.getItem("cards")) || []
   );
   const [card, setCard] = useState({});
-  
 
   const handleClose = () => {
     setEditlVisible(false);
@@ -48,7 +47,7 @@ function App() {
 
     localStorage.setItem("cards", JSON.stringify(updatedItems));
     setStoredItems(updatedItems);
-    console.log(updatedItems)
+    console.log(updatedItems);
   };
 
   useEffect(() => {
@@ -62,10 +61,30 @@ function App() {
 
   return (
     <div className="appContainer">
-      <header className="homeHeader" >My Personal Diary</header>
-      <Container storedItems={storedItems} onAdd={handleAdd} onEdit={handleEdit} onClose={handleClose} />
-      {isEditVisible && <EditModal item={card} onClose={handleClose} onSave={handleSave}/>}
-      {isAddVisible && <EditModal onClose={handleClose} onSave={handleSave}/>}
+      <header className="homeHeader">My Personal Diary</header>
+      <Container
+        storedItems={storedItems}
+        onAdd={handleAdd}
+        onEdit={handleEdit}
+        onClose={handleClose}
+      />{" "}
+      {isEditVisible && (
+        <EditModal
+          item={card}
+          onClose={handleClose}
+          onSave={handleSave}
+          storedItems={storedItems}
+          buttonName={"Save Changes"}
+        />
+      )}
+      {isAddVisible && (
+        <EditModal
+          onClose={handleClose}
+          onSave={handleSave}
+          storedItems={storedItems}
+          buttonName={"Add Entry"}
+        />
+      )}
     </div>
   );
 }
