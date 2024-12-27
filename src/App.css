@@ -18,4 +18,3 @@
 .appContainer {
   @apply min-h-screen text-[#333] bg-[#E8E1D3] flex flex-col items-center pb-[100px]
 }
-

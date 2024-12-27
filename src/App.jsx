@@ -2,7 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import initializeFakeData from "./fakeData";
 import Container from "./components/Container";
-import EditModal from "./components/EditModal"
+import EditModal from "./components/EditModal";
 
 function App() {
   initializeFakeData();
@@ -12,6 +12,7 @@ function App() {
     JSON.parse(localStorage.getItem("myFakeData")) || []
   );
   const [card, setCard] = useState({});
+  
 
   const handleClose = () => {
     setEditlVisible(false);
@@ -49,7 +50,7 @@ function App() {
 
     localStorage.setItem("myFakeData", JSON.stringify(updatedItems));
     setStoredItems(updatedItems);
-    handleclick();
+    console.log(updatedItems)
   };
 
   useEffect(() => {
@@ -60,8 +61,6 @@ function App() {
   useEffect(() => {
     localStorage.setItem("myFakeData", JSON.stringify(storedItems));
   }, [storedItems]);
-
-  console.log(storedItems);
 
   return (
     <div className="appContainer">
