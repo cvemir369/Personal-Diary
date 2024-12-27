@@ -64,8 +64,8 @@ function App() {
   console.log(storedItems);
 
   return (
-    <div className="bg-[#E8E1D3] h-screen text-[#333] flex flex-col items-center">
-      <header className="pt-24 font-serif text-4xl mb-12" >My Personal Diary</header>
+    <div className="appContainer">
+      <header className="homeHeader" >My Personal Diary</header>
       <Container storedItems={storedItems} onAdd={handleAdd} onEdit={handleEdit} onClose={handleClose} />
       {isEditVisible && <EditModal item={card} onClose={handleClose} onSave={handleSave}/>}
       {isAddVisible && <EditModal onClose={handleClose} onSave={handleSave}/>}

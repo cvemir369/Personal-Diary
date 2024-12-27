@@ -3,7 +3,7 @@
 }
 
 .card-btn {
-  @apply flex flex-col gap-2 w-[300px] justify-evenly shadow-lg bg-white rounded-2xl p-5 hover:shadow-orange-200;
+  @apply flex flex-col gap-2 w-[300px] h-[400px] justify-evenly shadow-lg bg-white rounded-2xl p-5 hover:shadow-orange-200;
 }
 
 .card-img {
@@ -11,9 +11,14 @@
 }
 
 .card-title {
-  @apply text-2xl font-bold;
+  @apply text-2xl font-bold line-clamp-1;
 }
 
 .card-date {
   @apply text-sm;
+}
+
+.card-add-btn {
+  @apply w-[300px] h-[400px] justify-center shadow-lg bg-white rounded-2xl p-5 hover:shadow-orange-200;
+
 }
