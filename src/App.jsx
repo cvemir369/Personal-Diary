@@ -25,6 +25,12 @@ function App() {
     setCard(item);
   };
 
+  const handleDelete = (itemDel) => {
+    const updatedItems = storedItems.filter((item) => item.id !== itemDel.id);
+    localStorage.setItem("myFakeData", JSON.stringify(updatedItems));
+    setStoredItems(updatedItems);
+  };
+
   const handleSave = (newItem) => {
     if (!newItem.id) {
       newItem.id = storedItems.length + 1;
@@ -66,8 +72,9 @@ function App() {
         storedItems={storedItems}
         onAdd={handleAdd}
         onEdit={handleEdit}
+        onDelete={handleDelete}
         onClose={handleClose}
-      />{" "}
+      />
       {isEditVisible && (
         <EditModal
           item={card}
