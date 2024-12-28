@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import "./EditModal.css";
 import * as yup from "yup";
 
-function EditModal({ item = {}, onClose, onSave, storedItems, buttonName}) {
+function EditModal({ item = {}, onClose, onSave, storedItems, buttonName }) {
   const id = item.id || null;
 
   const existingDate = (date, id) => {
@@ -60,10 +60,10 @@ function EditModal({ item = {}, onClose, onSave, storedItems, buttonName}) {
     <div className="modalBody">
       <div className="modalContainer">
         <div className="modalHeader">
-          <h2 className="text-4xl">New Diary Entry</h2>
-          <button onClick={onClose} >
-            &times;
-          </button>
+          <h2 className="text-4xl">
+            {item.title ? "Edit Diary Entry" : "New Diary Entry"}
+          </h2>
+          <button onClick={onClose}>&times;</button>
         </div>
         <div className="p-6">
           <form
@@ -93,12 +93,12 @@ function EditModal({ item = {}, onClose, onSave, storedItems, buttonName}) {
                 <label htmlFor="img" className="lable-style">
                   Img URL
                   <input
-                  {...register("img")}
-                  type="text"
-                  id="img"
-                  name="img"
-                  className="input-style"
-                />
+                    {...register("img")}
+                    type="text"
+                    id="img"
+                    name="img"
+                    className="input-style"
+                  />
                 </label>
                 {errors.img && (
                   <span className="error">{errors.img.message}</span>
@@ -110,12 +110,12 @@ function EditModal({ item = {}, onClose, onSave, storedItems, buttonName}) {
               <label htmlFor="title" className="lable-style">
                 Title
                 <input
-                {...register("title")}
-                type="text"
-                id="title"
-                name="title"
-                className="input-style"
-              />
+                  {...register("title")}
+                  type="text"
+                  id="title"
+                  name="title"
+                  className="input-style"
+                />
               </label>
               {errors.title && (
                 <span className="error">{errors.title.message}</span>
@@ -126,12 +126,12 @@ function EditModal({ item = {}, onClose, onSave, storedItems, buttonName}) {
               <label htmlFor="desc" className="lable-style">
                 Description
                 <textarea
-                {...register("desc")}
-                id="desc"
-                name="desc"
-                rows="5"
-                className="input-style"
-              ></textarea>
+                  {...register("desc")}
+                  id="desc"
+                  name="desc"
+                  rows="5"
+                  className="input-style"
+                ></textarea>
               </label>
               {errors.desc && (
                 <span className="error">{errors.desc.message}</span>
@@ -139,10 +139,7 @@ function EditModal({ item = {}, onClose, onSave, storedItems, buttonName}) {
             </div>
 
             <div className="buttonContainer">
-              <button
-                type="submit"
-                className="submitButton"
-              >
+              <button type="submit" className="submitButton">
                 {buttonName}
               </button>
             </div>
