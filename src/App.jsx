@@ -1,17 +1,16 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import initializeFakeData from "./fakeData";
 import Container from "./components/Container";
 import EditModal from "./components/EditModal";
 
 function App() {
-  initializeFakeData();
   const [isEditVisible, setEditlVisible] = useState(false);
   const [isAddVisible, setaddVisible] = useState(false);
   const [storedItems, setStoredItems] = useState(
-    JSON.parse(localStorage.getItem("myFakeData")) || []
+    JSON.parse(localStorage.getItem("cards")) || []
   );
   const [card, setCard] = useState({});
+  
 
   const handleClose = () => {
     setEditlVisible(false);
@@ -53,25 +52,23 @@ function App() {
       updatedItems = [...storedItems, newItem];
     }
 
-    localStorage.setItem("myFakeData", JSON.stringify(updatedItems));
+    localStorage.setItem("cards", JSON.stringify(updatedItems));
     setStoredItems(updatedItems);
-    handleclick();
+    console.log(updatedItems)
   };
 
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("myFakeData")) || [];
+    const items = JSON.parse(localStorage.getItem("cards")) || [];
     setStoredItems(items);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("myFakeData", JSON.stringify(storedItems));
+    localStorage.setItem("cards", JSON.stringify(storedItems));
   }, [storedItems]);
 
-  // console.log(storedItems);
-
   return (
-    <div className="bg-[#E8E1D3] h-screen text-[#333] flex flex-col items-center">
-      <header className="pt-24 font-serif text-4xl mb-12">
+    <div className="appContainer">
+      <header className="homeHeader">
         My Personal Diary
       </header>
       <Container

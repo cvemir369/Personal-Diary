@@ -1,9 +1,11 @@
 import AddCardButton from "./AddCardButton";
 import SmallCard from "./SmallCard";
+import './Container.css'
 
 function Container({ storedItems, onAdd, onEdit, onDelete, onClose }) {
   return (
-    <div className="grid grid-cols-4 justify-between gap-5">
+    <div className="mx-auto">
+      <div className="listItems">
       <AddCardButton onAdd={onAdd} onClose={onClose} />
       {storedItems.map((item) => (
         <SmallCard
@@ -13,6 +15,7 @@ function Container({ storedItems, onAdd, onEdit, onDelete, onClose }) {
           onDelete={onDelete}
         />
       ))}
+    </div>
     </div>
   );
 }
