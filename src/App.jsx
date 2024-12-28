@@ -27,13 +27,18 @@ function App() {
 
   const handleDelete = (itemDel) => {
     const updatedItems = storedItems.filter((item) => item.id !== itemDel.id);
-    localStorage.setItem("myFakeData", JSON.stringify(updatedItems));
+    localStorage.setItem("cards", JSON.stringify(updatedItems));
     setStoredItems(updatedItems);
   };
 
   const handleSave = (newItem) => {
+    if (storedItems.length == 0) {
+      newItem.id = 1;
+    }
+
     if (!newItem.id) {
-      newItem.id = storedItems.length + 1;
+      const maxId = Math.max(...storedItems.map((item) => item.id));
+      newItem.id = maxId + 1;
     }
 
     const isIdExist =
