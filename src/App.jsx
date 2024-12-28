@@ -26,6 +26,12 @@ function App() {
     setCard(item);
   };
 
+  const handleDelete = (itemDel) => {
+    const updatedItems = storedItems.filter((item) => item.id !== itemDel.id);
+    localStorage.setItem("myFakeData", JSON.stringify(updatedItems));
+    setStoredItems(updatedItems);
+  };
+
   const handleSave = (newItem) => {
     if (!newItem.id) {
       newItem.id = storedItems.length + 1;
@@ -62,10 +68,20 @@ function App() {
 
   return (
     <div className="appContainer">
-      <header className="homeHeader" >My Personal Diary</header>
-      <Container storedItems={storedItems} onAdd={handleAdd} onEdit={handleEdit} onClose={handleClose} />
-      {isEditVisible && <EditModal item={card} onClose={handleClose} onSave={handleSave}/>}
-      {isAddVisible && <EditModal onClose={handleClose} onSave={handleSave}/>}
+      <header className="homeHeader">
+        My Personal Diary
+      </header>
+      <Container
+        storedItems={storedItems}
+        onAdd={handleAdd}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+        onClose={handleClose}
+      />
+      {isEditVisible && (
+        <EditModal item={card} onClose={handleClose} onSave={handleSave} />
+      )}
+      {isAddVisible && <EditModal onClose={handleClose} onSave={handleSave} />}
     </div>
   );
 }
