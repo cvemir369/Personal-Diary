@@ -23,18 +23,25 @@ function EditModal({ item = {}, onClose, onSave, storedItems, buttonName }) {
       .test("date-taken", "This date is already taken", function (value) {
         return !existingDate(value, id);
       }),
-    img: yup.string().required("Image URL is required"),
-    title: yup.string().required("Title is required"),
+    img: yup
+      .string()
+      .required("Image URL is required")
+      .max(300, "Maximum length is 300 characters"),
+    title: yup
+      .string()
+      .required("Title is required")
+      .max(30, "Maximum length is 30 characters"),
     desc: yup
       .string()
       .min(5, "Description must be at least 5 characters long")
+      .max(400, "Maximum length is 400 characters")
       .required("Description is required"),
   });
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     resolver: yupResolver(schema),
     mode: "onTouched",
@@ -139,7 +146,12 @@ function EditModal({ item = {}, onClose, onSave, storedItems, buttonName }) {
             </div>
 
             <div className="buttonContainer">
-              <button type="submit" className="submitButton">
+              <button
+                type="submit"
+                className={`${
+                  !isValid ? "disabled" : "submitButton"
+                }`}
+              >
                 {buttonName}
               </button>
             </div>
