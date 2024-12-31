@@ -1,0 +1,66 @@
+/* Theme Selector Styles */
+.theme-selector {
+  display: flex;
+  gap: 10px;
+}
+
+.theme-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.3s ease;
+}
+
+.theme-circle:hover {
+  transform: scale(1.2);
+}
+
+.theme-light {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+}
+
+.theme-dark {
+  background-color: #000000;
+  border: 1px solid #ffffff;
+}
+
+.theme-colorful {
+  background: linear-gradient(135deg, #ff0000, #0000ff);
+  border: 2px solid #4b0082;
+}
+
+/* Change Name Button */
+.change-name-btn {
+  padding: 6px 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.theme-light .change-name-btn {
+  background-color: #f9f9f9;
+  color: #000000;
+  border: 1px solid #e0e0e0;
+}
+
+.theme-dark .change-name-btn {
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid #444444;
+}
+
+.theme-colorful .change-name-btn {
+  background-color: #f8d7da;
+  color: #4b0082;
+  border: 1px solid #e4a6b0;
+}
+
+.change-name-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}

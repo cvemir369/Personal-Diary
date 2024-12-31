@@ -1,20 +1,102 @@
-/* Custom styles */
-.custom-h1 {
-  @apply text-4xl font-bold;
-}
-
-.input-style {
-  @apply mt-1 block shadow leading-10 p-2 bg-gray-100 w-full border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-0 focus:border-gray-400;
-}
-
-.lable-style {
-  @apply block text-lg font-medium text-gray-700
-}
-
-.homeHeader {
-  @apply pt-24 font-serif text-4xl mb-12
-}
-
 .appContainer {
-  @apply min-h-screen text-[#333] bg-[#E8E1D3] flex flex-col items-center pb-[100px]
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding-bottom: 100px;
+  padding-top: 50px;
+}
+
+/* Light theme */
+.theme-light .appContainer {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.theme-light .card-btn,
+.theme-light .card-add-btn {
+  background-color: #f9f9f9;
+  color: #000000;
+  border: 1px solid #e0e0e0;
+}
+
+.theme-light .card-title {
+  color: #000000;
+}
+
+/* Header and Footer styles for Light theme */
+.theme-light .navbar,
+.theme-light .footer {
+  background-color: #b3b3b3;
+  color: #333333;
+}
+
+/* Dark theme */
+.theme-dark .appContainer {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.theme-dark .card-btn,
+.theme-dark .card-add-btn {
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid #444444;
+}
+
+.theme-dark .card-title {
+  color: #ffffff;
+}
+
+/* Header and Footer styles for Dark theme */
+.theme-dark .navbar,
+.theme-dark .footer {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+/* Colorful theme */
+.theme-colorful .appContainer {
+  background-color: #ffe4e1;
+  color: #4b0082;
+}
+
+.theme-colorful .card-btn,
+.theme-colorful .card-add-btn {
+  background-color: #f8d7da;
+  color: #4b0082;
+  border: 1px solid #e4a6b0;
+}
+
+.theme-colorful .card-title {
+  color: #4b0082;
+}
+
+/* Header and Footer styles for Colorful theme */
+.theme-colorful .navbar,
+.theme-colorful .footer {
+  background-color: #ffcccb;
+  color: #4b0082;
+}
+
+/* Smooth transition for cards */
+.card-btn,
+.card-add-btn {
+  @apply flex flex-col gap-2 w-[300px] h-[400px] shadow-lg rounded-2xl p-5;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-img {
+  @apply mb-2 object-cover rounded-2xl w-full max-h-72;
+}
+
+.card-title {
+  @apply text-2xl font-bold text-center;
+  color: inherit;
 }
