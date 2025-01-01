@@ -7,8 +7,8 @@ import PopupForm from "./components/PopupForm";
 import "./App.css";
 
 function App() {
-  const [isEditVisible, setEditVisible] = useState(false);
-  const [isAddVisible, setAddVisible] = useState(false);
+  const [isEditVisible, setEditlVisible] = useState(false);
+  const [isAddVisible, setaddVisible] = useState(false);
   const [storedItems, setStoredItems] = useState(
     JSON.parse(localStorage.getItem("cards")) || []
   );
@@ -17,39 +17,17 @@ function App() {
   const [userName, setUserName] = useState("");
   const [showPopup, setShowPopup] = useState(true);
 
-  // Load theme and userName from localStorage
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "theme-light";
-    const savedName = localStorage.getItem("userName") || "";
-    setTheme(savedTheme);
-    setUserName(savedName);
-    document.body.className = savedTheme; // Apply theme class to body
-  }, []);
-
-  // Save theme to localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-    document.body.className = theme;
-  }, [theme]);
-
-  // Save userName to localStorage whenever it changes
-  useEffect(() => {
-    if (userName) {
-      localStorage.setItem("userName", userName);
-    }
-  }, [userName]);
-
   const handleClose = () => {
-    setEditVisible(false);
-    setAddVisible(false);
+    setEditlVisible(false);
+    setaddVisible(false);
   };
 
   const handleAdd = () => {
-    setAddVisible(true);
+    setaddVisible(true);
   };
 
   const handleEdit = (item) => {
-    setEditVisible(true);
+    setEditlVisible(true);
     setCard(item);
   };
 
@@ -60,26 +38,43 @@ function App() {
   };
 
   const handleSave = (newItem) => {
+    if (storedItems.length == 0) {
+      newItem.id = 1;
+    }
+
     if (!newItem.id) {
-      const maxId = storedItems.length
-        ? Math.max(...storedItems.map((item) => item.id))
-        : 0;
+      const maxId = Math.max(...storedItems.map((item) => item.id));
       newItem.id = maxId + 1;
     }
 
-    const updatedItems = storedItems.map((existingItem) =>
-      existingItem.id === newItem.id
-        ? { ...existingItem, ...newItem }
-        : existingItem
-    );
+    const isIdExist =
+      storedItems.findIndex((existingItem) => existingItem.id === newItem.id) >=
+      0;
 
-    if (!storedItems.find((item) => item.id === newItem.id)) {
-      updatedItems.push(newItem);
+    let updatedItems;
+    if (isIdExist) {
+      updatedItems = storedItems.map((existingItem) =>
+        existingItem.id === newItem.id
+          ? { ...existingItem, ...newItem }
+          : existingItem
+      );
+    } else {
+      updatedItems = [...storedItems, newItem];
     }
 
     localStorage.setItem("cards", JSON.stringify(updatedItems));
     setStoredItems(updatedItems);
+    console.log(updatedItems);
   };
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("cards")) || [];
+    setStoredItems(items);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cards", JSON.stringify(storedItems));
+  }, [storedItems]);
 
   const handlePopupStart = ({ name, theme }) => {
     setUserName(name);
@@ -88,7 +83,7 @@ function App() {
     localStorage.setItem("userName", name);
     localStorage.setItem("theme", theme);
   };
-  // Open the popup again
+
   const openPopup = () => {
     setShowPopup(true);
   };
@@ -101,7 +96,6 @@ function App() {
           <Header
             setTheme={setTheme}
             userName={userName}
-            // Pass openPopup function
             openPopup={openPopup}
           />
           <div className={`appContainer ${theme}`}>

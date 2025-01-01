@@ -1,92 +1,71 @@
 .appContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  padding-bottom: 100px;
-  padding-top: 50px;
+  @apply flex flex-col items-center justify-start min-h-screen transition-all duration-2000 ease-in-out pb-[100px] pt-[50px];
 }
 
 /* Light theme */
 .theme-light .appContainer {
-  background-color: #ffffff;
-  color: #000000;
+  @apply bg-white text-black;
 }
 
 .theme-light .card-btn,
 .theme-light .card-add-btn {
-  background-color: #f9f9f9;
-  color: #000000;
-  border: 1px solid #e0e0e0;
+  @apply bg-[#f9f9f9] text-black border border-[#e0e0e0];
 }
 
 .theme-light .card-title {
-  color: #000000;
+  @apply text-black;
 }
 
-/* Header and Footer styles for Light theme */
+/* Lighter Header and Footer styles for Light theme */
 .theme-light .navbar,
 .theme-light .footer {
-  background-color: #b3b3b3;
-  color: #333333;
+  @apply bg-[#e0e0e0] text-[#333333]; /* Lighter shade for background */
 }
 
 /* Dark theme */
 .theme-dark .appContainer {
-  background-color: #000000;
-  color: #ffffff;
+  @apply bg-black text-white;
 }
 
 .theme-dark .card-btn,
 .theme-dark .card-add-btn {
-  background-color: #333333;
-  color: #ffffff;
-  border: 1px solid #444444;
+  @apply bg-[#333333] text-white border border-[#444444];
 }
 
 .theme-dark .card-title {
-  color: #ffffff;
+  @apply text-white;
 }
 
 /* Header and Footer styles for Dark theme */
 .theme-dark .navbar,
 .theme-dark .footer {
-  background-color: #1a1a1a;
-  color: #ffffff;
+  @apply bg-[#1a1a1a] text-white;
 }
 
 /* Colorful theme */
 .theme-colorful .appContainer {
-  background-color: #ffe4e1;
-  color: #4b0082;
+  @apply bg-[#ffe4e1] text-[#4b0082];
 }
 
 .theme-colorful .card-btn,
 .theme-colorful .card-add-btn {
-  background-color: #f8d7da;
-  color: #4b0082;
-  border: 1px solid #e4a6b0;
+  @apply bg-[#f8d7da] text-[#4b0082] border border-[#e4a6b0];
 }
 
 .theme-colorful .card-title {
-  color: #4b0082;
+  @apply text-[#4b0082];
 }
 
 /* Header and Footer styles for Colorful theme */
 .theme-colorful .navbar,
 .theme-colorful .footer {
-  background-color: #ffcccb;
-  color: #4b0082;
+  @apply bg-[#ffcccb] text-[#4b0082];
 }
 
 /* Smooth transition for cards */
 .card-btn,
 .card-add-btn {
-  @apply flex flex-col gap-2 w-[300px] h-[400px] shadow-lg rounded-2xl p-5;
-  transition: background-color 0.3s ease, color 0.3s ease,
-    border-color 0.3s ease;
+  @apply flex flex-col gap-2 w-[300px] h-[400px] shadow-lg rounded-2xl p-5 transition-all duration-2000 ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
