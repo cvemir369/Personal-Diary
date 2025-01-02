@@ -1,0 +1,108 @@
+.logo {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-text {
+  font-family: inherit;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #4f46e5;
+  letter-spacing: -0.5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.logo-word {
+  display: inline-block;
+}
+
+.logo-word:first-child {
+  margin-right: 8px;
+}
+
+.animate-letter {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.logo-text:hover .animate-letter {
+  animation: waveLetter 0.5s infinite alternate ease-in-out,
+    colorChange 7s infinite;
+}
+
+.logo-text::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #4c2c92;
+  transition: width 0.5s ease;
+}
+
+.logo-text:hover::after {
+  width: 100%;
+  animation: underlineColorChange 7s infinite;
+}
+
+@keyframes waveLetter {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes colorChange {
+  0%,
+  100% {
+    color: #9b00c2;
+  }
+  14% {
+    color: #ff6b6b;
+  }
+  28% {
+    color: #feca57;
+  }
+  42% {
+    color: #48dbfb;
+  }
+  57% {
+    color: #ff9ff3;
+  }
+  71% {
+    color: #54a0ff;
+  }
+  85% {
+    color: #5f27cd;
+  }
+}
+
+@keyframes underlineColorChange {
+  0%,
+  100% {
+    background-color: #9b00c2;
+  }
+  14% {
+    background-color: #ff6b6b;
+  }
+  28% {
+    background-color: #feca57;
+  }
+  42% {
+    background-color: #48dbfb;
+  }
+  57% {
+    background-color: #ff9ff3;
+  }
+  71% {
+    background-color: #54a0ff;
+  }
+  85% {
+    background-color: #5f27cd;
+  }
+}
