@@ -99,6 +99,7 @@ function App() {
             openPopup={openPopup}
           />
           <div className={`appContainer ${theme}`}>
+          <header className="homeHeader">My Personal Diary</header>
             <Container
               storedItems={storedItems}
               onAdd={handleAdd}

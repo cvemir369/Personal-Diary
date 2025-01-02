@@ -9,7 +9,7 @@
 
 .theme-light .card-btn,
 .theme-light .card-add-btn {
-  @apply bg-[#f9f9f9] text-black border border-[#e0e0e0];
+  /* @apply bg-[#f9f9f9] text-black border border-[#e0e0e0]; */
 }
 
 .theme-light .card-title {
@@ -78,4 +78,8 @@
 .card-title {
   @apply text-2xl font-bold text-center;
   color: inherit;
+}
+
+.homeHeader {
+  @apply pt-24 font-serif text-4xl mb-12 text-gray-700
 }
