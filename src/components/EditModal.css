@@ -39,5 +39,9 @@
 }
 
 .submitButton {
-  @apply px-4 py-2 bg-[#d0cabd] text-white font-medium rounded-md;
+  @apply px-4 py-2 bg-[#5badf5] text-white font-medium rounded-md hover:bg-[#4a90e2]
+}
+
+.disabled {
+  @apply px-4 py-2 bg-[#ebebeb] cursor-not-allowed font-medium rounded-md
 }

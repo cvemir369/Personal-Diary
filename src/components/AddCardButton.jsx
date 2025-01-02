@@ -1,9 +1,10 @@
 import "./SmallCard.css";
+import { format } from "date-fns";
 
 function AddCardButton({ onAdd }) {
   const getTodayDate = () => {
     const today = new Date();
-    return today.toLocaleDateString();
+    return format(new Date(), "yyyy-MM-dd");
   };
 
   return (
