@@ -7,9 +7,20 @@ const Header = ({ setTheme, userName, openPopup }) => {
 
   return (
     <div className="navbar bg-base-100">
-      <div className="flex-1">
-        <a className="btn btn-ghost text-xl">Welcome {userName}</a>
+      <div className="dropdown bg-base-100 flex-1">
+        <div tabIndex={0} role="button">
+          <a className="btn m-1 text-xl">Welcome {userName}</a>
+        </div>
+        <ul
+          tabIndex={0}
+          className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+        >
+          <li>
+            <button onClick={openPopup}>Change Name</button>
+          </li>
+        </ul>
       </div>
+
       <div className="flex-none gap-4">
         <div className="theme-selector">
           <button
@@ -28,9 +39,6 @@ const Header = ({ setTheme, userName, openPopup }) => {
             aria-label="Colorful Theme"
           ></button>
         </div>
-        <button className="change-name-btn" onClick={openPopup}>
-          Change Name
-        </button>
       </div>
     </div>
   );
