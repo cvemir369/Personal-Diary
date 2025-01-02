@@ -15,15 +15,15 @@
 }
 
 .detail-title {
-  @apply text-2xl font-bold;
+  @apply text-2xl font-bold text-black;
 }
 
 .detail-date {
-  @apply text-sm;
+  @apply text-sm text-black;
 }
 
 .detail-desc {
-  @apply text-justify;
+  @apply text-justify text-black;
 }
 
 .detail-btn-container {

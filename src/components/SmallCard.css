@@ -20,5 +20,4 @@
 
 .card-add-btn {
   @apply w-[300px] h-[400px] justify-center shadow-lg bg-white rounded-2xl p-5 hover:shadow-orange-200;
-
 }
