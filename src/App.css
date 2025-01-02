@@ -1,20 +1,81 @@
-/* Custom styles */
-.custom-h1 {
-  @apply text-4xl font-bold;
-}
-
-.input-style {
-  @apply mt-1 block shadow leading-10 p-2 bg-gray-100 w-full border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-0 focus:border-gray-400;
-}
-
-.lable-style {
-  @apply block text-lg font-medium text-gray-700
-}
-
-.homeHeader {
-  @apply pt-24 font-serif text-4xl mb-12
-}
-
 .appContainer {
-  @apply min-h-screen text-[#333] bg-[#E8E1D3] flex flex-col items-center pb-[100px]
+  @apply flex flex-col items-center justify-start min-h-screen transition-all duration-2000 ease-in-out pb-[100px] pt-[50px];
+}
+
+/* Light theme */
+.theme-light .appContainer {
+  @apply bg-white text-black;
+}
+
+.theme-light .card-btn,
+.theme-light .card-add-btn {
+  @apply bg-[#f9f9f9] text-black border border-[#e0e0e0];
+}
+
+.theme-light .card-title {
+  @apply text-black;
+}
+
+/* Lighter Header and Footer styles for Light theme */
+.theme-light .navbar,
+.theme-light .footer {
+  @apply bg-[#e0e0e0] text-[#333333]; /* Lighter shade for background */
+}
+
+/* Dark theme */
+.theme-dark .appContainer {
+  @apply bg-black text-white;
+}
+
+.theme-dark .card-btn,
+.theme-dark .card-add-btn {
+  @apply bg-[#333333] text-white border border-[#444444];
+}
+
+.theme-dark .card-title {
+  @apply text-white;
+}
+
+/* Header and Footer styles for Dark theme */
+.theme-dark .navbar,
+.theme-dark .footer {
+  @apply bg-[#1a1a1a] text-white;
+}
+
+/* Colorful theme */
+.theme-colorful .appContainer {
+  @apply bg-[#ffe4e1] text-[#4b0082];
+}
+
+.theme-colorful .card-btn,
+.theme-colorful .card-add-btn {
+  @apply bg-[#f8d7da] text-[#4b0082] border border-[#e4a6b0];
+}
+
+.theme-colorful .card-title {
+  @apply text-[#4b0082];
+}
+
+/* Header and Footer styles for Colorful theme */
+.theme-colorful .navbar,
+.theme-colorful .footer {
+  @apply bg-[#ffcccb] text-[#4b0082];
+}
+
+/* Smooth transition for cards */
+.card-btn,
+.card-add-btn {
+  @apply flex flex-col gap-2 w-[300px] h-[400px] shadow-lg rounded-2xl p-5 transition-all duration-2000 ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-img {
+  @apply mb-2 object-cover rounded-2xl w-full max-h-72;
+}
+
+.card-title {
+  @apply text-2xl font-bold text-center;
+  color: inherit;
 }

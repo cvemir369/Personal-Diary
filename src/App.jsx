@@ -1,7 +1,10 @@
-import "./App.css";
 import React, { useState, useEffect } from "react";
 import Container from "./components/Container";
 import EditModal from "./components/EditModal";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import PopupForm from "./components/PopupForm";
+import "./App.css";
 
 function App() {
   const [isEditVisible, setEditlVisible] = useState(false);
@@ -10,6 +13,9 @@ function App() {
     JSON.parse(localStorage.getItem("cards")) || []
   );
   const [card, setCard] = useState({});
+  const [theme, setTheme] = useState("theme-light");
+  const [userName, setUserName] = useState("");
+  const [showPopup, setShowPopup] = useState(true);
 
   const handleClose = () => {
     setEditlVisible(false);
@@ -70,32 +76,56 @@ function App() {
     localStorage.setItem("cards", JSON.stringify(storedItems));
   }, [storedItems]);
 
+  const handlePopupStart = ({ name, theme }) => {
+    setUserName(name);
+    setTheme(theme);
+    setShowPopup(false);
+    localStorage.setItem("userName", name);
+    localStorage.setItem("theme", theme);
+  };
+
+  const openPopup = () => {
+    setShowPopup(true);
+  };
+
   return (
-    <div className="appContainer">
-      <header className="homeHeader">My Personal Diary</header>
-      <Container
-        storedItems={storedItems}
-        onAdd={handleAdd}
-        onEdit={handleEdit}
-        onDelete={handleDelete}
-        onClose={handleClose}
-      />
-      {isEditVisible && (
-        <EditModal
-          item={card}
-          onClose={handleClose}
-          onSave={handleSave}
-          storedItems={storedItems}
-          buttonName={"Save Changes"}
-        />
-      )}
-      {isAddVisible && (
-        <EditModal
-          onClose={handleClose}
-          onSave={handleSave}
-          storedItems={storedItems}
-          buttonName={"Add Entry"}
-        />
+    <div>
+      {showPopup && <PopupForm onStart={handlePopupStart} />}
+      {!showPopup && (
+        <>
+          <Header
+            setTheme={setTheme}
+            userName={userName}
+            openPopup={openPopup}
+          />
+          <div className={`appContainer ${theme}`}>
+            <Container
+              storedItems={storedItems}
+              onAdd={handleAdd}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+              onClose={handleClose}
+            />
+            {isEditVisible && (
+              <EditModal
+                item={card}
+                onClose={handleClose}
+                onSave={handleSave}
+                storedItems={storedItems}
+                buttonName={"Save Changes"}
+              />
+            )}
+            {isAddVisible && (
+              <EditModal
+                onClose={handleClose}
+                onSave={handleSave}
+                storedItems={storedItems}
+                buttonName={"Add Entry"}
+              />
+            )}
+          </div>
+          <Footer />
+        </>
       )}
     </div>
   );
