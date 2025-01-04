@@ -92,7 +92,7 @@ function App() {
     <div>
       {showPopup && <PopupForm onStart={handlePopupStart} />}
       {!showPopup && (
-        <>
+        <div className="flex flex-col h-screen">
           <Header
             setTheme={setTheme}
             userName={userName}
@@ -125,7 +125,7 @@ function App() {
             )}
           </div>
           <Footer />
-        </>
+        </div>
       )}
     </div>
   );
