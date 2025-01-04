@@ -1,32 +1,33 @@
 import "./Header.css";
 import Logo from "./Logo";
 
-const Header = ({ setTheme, userName, openPopup }) => {
+const Header = ({ setTheme, userName, openPopup, theme }) => {
   const changeTheme = (themeName) => {
     setTheme(themeName);
   };
 
   return (
-    <header>
-      <div className="navbar bg-base-100">
-        <div className="dropdown bg-base-100 flex-1">
+    <header className={theme}>
+      <div className="navbar justify-center">
+        <div className="dropdown basis-1/3 justify-start">
           <div tabIndex={0} role="button">
-            <a className="btn m-1 text-xl">Welcome {userName}</a>
+            <a className="btn m-1 text-xl change-name-btn">
+              Welcome {userName}
+            </a>
           </div>
-          <ul
-            tabIndex={0}
-            className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
-          >
+          <ul tabIndex={0} className="dropdown-content menu z-[1]">
             <li>
-              <button onClick={openPopup}>Change Name</button>
+              <button className="change-name-btn" onClick={openPopup}>
+                Change Name
+              </button>
             </li>
           </ul>
         </div>
 
-        <div className="flex-1 justify-center">
+        <div className="mx-auto">
           <Logo />
         </div>
-        <div className="flex-1 justify-end gap-4">
+        <div className="gap-4 basis-1/3 justify-end">
           <div className="theme-selector">
             <button
               className="theme-circle theme-light"

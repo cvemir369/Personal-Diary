@@ -97,6 +97,7 @@ function App() {
             setTheme={setTheme}
             userName={userName}
             openPopup={openPopup}
+            theme={theme}
           />
           <div className={`appContainer ${theme}`}>
             <Container
@@ -124,7 +125,7 @@ function App() {
               />
             )}
           </div>
-          <Footer />
+          <Footer theme={theme} />
         </>
       )}
     </div>
