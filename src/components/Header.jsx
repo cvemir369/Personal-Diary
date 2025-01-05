@@ -11,7 +11,7 @@ const Header = ({ setTheme, userName, openPopup, theme }) => {
       <div className="navbar justify-center">
         <div className="dropdown basis-1/3 justify-start">
           <div tabIndex={0} role="button">
-            <a className="btn m-1 text-xl change-name-btn">
+            <a className="btn m-1 text-xl change-name-btn h-auto">
               Welcome {userName}
             </a>
           </div>

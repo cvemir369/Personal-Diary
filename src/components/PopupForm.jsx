@@ -24,7 +24,7 @@ const PopupForm = ({ onStart }) => {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="input-style"
+              className="input-style text-black"
               placeholder="Enter your name"
               required
             />
@@ -36,7 +36,7 @@ const PopupForm = ({ onStart }) => {
             <select
               value={theme}
               onChange={(e) => setTheme(e.target.value)}
-              className="input-style"
+              className="input-style text-black"
             >
               <option value="theme-light">Light</option>
               <option value="theme-dark">Dark</option>

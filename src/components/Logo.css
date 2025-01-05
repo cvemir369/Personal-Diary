@@ -5,9 +5,11 @@
 }
 
 .logo-text {
-  font-family: inherit;
-  font-size: 2rem;
-  font-weight: 600;
+  font-family: "Henny Penny", serif;
+  font-size: 3rem;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
   color: #4f46e5;
   letter-spacing: -0.5px;
   position: relative;
