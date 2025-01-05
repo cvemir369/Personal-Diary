@@ -13,9 +13,11 @@ function App() {
     JSON.parse(localStorage.getItem("cards")) || []
   );
   const [card, setCard] = useState({});
-  const [theme, setTheme] = useState("theme-light");
-  const [userName, setUserName] = useState("");
-  const [showPopup, setShowPopup] = useState(true);
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || "theme-light"
+  );
+  const [userName, setUserName] = useState(localStorage.getItem("userName") || "");
+  const [showPopup, setShowPopup] = useState(!localStorage.getItem("userName"));
 
   const handleClose = () => {
     setEditlVisible(false);
@@ -38,7 +40,7 @@ function App() {
   };
 
   const handleSave = (newItem) => {
-    if (storedItems.length == 0) {
+    if (storedItems.length === 0) {
       newItem.id = 1;
     }
 
@@ -64,17 +66,12 @@ function App() {
 
     localStorage.setItem("cards", JSON.stringify(updatedItems));
     setStoredItems(updatedItems);
-    console.log(updatedItems);
   };
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("cards")) || [];
     setStoredItems(items);
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem("cards", JSON.stringify(storedItems));
-  }, [storedItems]);
 
   const handlePopupStart = ({ name, theme }) => {
     setUserName(name);
@@ -92,7 +89,7 @@ function App() {
     <div>
       {showPopup && <PopupForm onStart={handlePopupStart} />}
       {!showPopup && (
-        <>
+        <div className="flex flex-col h-screen">
           <Header
             setTheme={setTheme}
             userName={userName}
@@ -125,7 +122,7 @@ function App() {
             )}
           </div>
           <Footer />
-        </>
+        </div>
       )}
     </div>
   );

@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       transitionDuration: {
-        2000: "2000ms",
+        500: "500ms",
       },
     },
   },
