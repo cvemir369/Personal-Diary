@@ -1,5 +1,5 @@
 .appContainer {
-  @apply flex flex-col items-center justify-start min-h-screen transition-all duration-2000 ease-in-out pb-[100px] pt-[50px];
+  @apply h-full pb-[100px] pt-[50px];
 }
 
 /* Light theme */
@@ -19,7 +19,7 @@
 /* Lighter Header and Footer styles for Light theme */
 .theme-light .navbar,
 .theme-light .footer {
-  @apply bg-[#e0e0e0] text-[#333333]; /* Lighter shade for background */
+  @apply bg-[#ffffff] text-[#333333]; /* Lighter shade for background */
 }
 
 /* Dark theme */
@@ -65,7 +65,7 @@
 /* Smooth transition for cards */
 .card-btn,
 .card-add-btn {
-  @apply flex flex-col gap-2 w-[300px] h-[400px] shadow-lg rounded-2xl p-5 transition-all duration-2000 ease-in-out;
+  @apply flex flex-col gap-2 w-[300px] h-[400px] shadow-lg rounded-2xl p-5 transition-all duration-500 ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;

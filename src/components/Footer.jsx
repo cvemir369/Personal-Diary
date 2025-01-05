@@ -41,7 +41,7 @@ const Footer = ({ theme }) => {
           </nav>
           <p className="font-medium text-center my-4 max-w-md">"{quote}"</p>
           <aside>
-            <p className="text-xs opacity-50 mt-4">
+            <p className="text-xs mt-4">
               Created with ❤️ {new Date().getFullYear()} - All rights reserved.
             </p>
           </aside>
