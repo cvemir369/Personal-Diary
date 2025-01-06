@@ -24,6 +24,7 @@ function App() {
   const handleClose = () => {
     setEditlVisible(false);
     setaddVisible(false);
+    setShowPopup(false);
   };
 
   const handleAdd = () => {
@@ -89,7 +90,9 @@ function App() {
 
   return (
     <div>
-      {showPopup && <PopupForm onStart={handlePopupStart} />}
+      {showPopup && (
+        <PopupForm onStart={handlePopupStart} onClose={handleClose} />
+      )}
       {!showPopup && (
         <div className="flex flex-col">
           <Header
