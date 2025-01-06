@@ -1,5 +1,5 @@
 .appContainer {
-  @apply h-full pb-[100px] pt-[50px];
+  @apply flex flex-grow pb-[100px] pt-[50px];
 }
 
 .pageContainer {
