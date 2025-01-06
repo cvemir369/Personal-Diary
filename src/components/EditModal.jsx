@@ -67,10 +67,12 @@ function EditModal({ item = {}, onClose, onSave, storedItems, buttonName }) {
     <div className="modalBody">
       <div className="modalContainer">
         <div className="modalHeader">
-          <h2 className="text-4xl">
+          <h2 className="text-3xl">
             {item.title ? "Edit Diary Entry" : "New Diary Entry"}
           </h2>
-          <button onClick={onClose}>&times;</button>
+          <button onClick={onClose} className="text-3xl">
+            &times;
+          </button>
         </div>
         <div className="p-6">
           <form
@@ -136,7 +138,7 @@ function EditModal({ item = {}, onClose, onSave, storedItems, buttonName }) {
                   {...register("desc")}
                   id="desc"
                   name="desc"
-                  rows="5"
+                  rows="3"
                   className="input-style"
                 ></textarea>
               </label>
@@ -148,9 +150,7 @@ function EditModal({ item = {}, onClose, onSave, storedItems, buttonName }) {
             <div className="buttonContainer">
               <button
                 type="submit"
-                className={`${
-                  !isValid ? "disabled" : "submitButton"
-                }`}
+                className={`${!isValid ? "disabled" : "submitButton"}`}
               >
                 {buttonName}
               </button>

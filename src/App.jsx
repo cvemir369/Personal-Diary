@@ -16,12 +16,15 @@ function App() {
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") || "theme-light"
   );
-  const [userName, setUserName] = useState(localStorage.getItem("userName") || "");
+  const [userName, setUserName] = useState(
+    localStorage.getItem("userName") || ""
+  );
   const [showPopup, setShowPopup] = useState(!localStorage.getItem("userName"));
 
   const handleClose = () => {
     setEditlVisible(false);
     setaddVisible(false);
+    setShowPopup(false);
   };
 
   const handleAdd = () => {
@@ -87,13 +90,16 @@ function App() {
 
   return (
     <div>
-      {showPopup && <PopupForm onStart={handlePopupStart} />}
+      {showPopup && (
+        <PopupForm onStart={handlePopupStart} onClose={handleClose} />
+      )}
       {!showPopup && (
-        <div className="flex flex-col h-screen">
+        <div className="flex flex-col">
           <Header
             setTheme={setTheme}
             userName={userName}
             openPopup={openPopup}
+            theme={theme}
           />
           <div className={`appContainer ${theme}`}>
             <Container
@@ -121,7 +127,7 @@ function App() {
               />
             )}
           </div>
-          <Footer />
+          <Footer theme={theme} />
         </div>
       )}
     </div>

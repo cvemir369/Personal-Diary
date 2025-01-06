@@ -23,7 +23,7 @@
 }
 
 .detail-desc {
-  @apply text-justify text-black;
+  @apply text-justify text-black my-2;
 }
 
 .detail-btn-container {

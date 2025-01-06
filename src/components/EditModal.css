@@ -1,9 +1,9 @@
 .modalBody {
-  @apply fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center min-w-[500px];
+  @apply fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center max-h-full;
 }
 
 .modalContainer {
-  @apply bg-white rounded-lg shadow-lg min-w-[400px] w-1/2 p-8;
+  @apply bg-white rounded-lg shadow-lg min-w-[400px] w-1/2 p-2 max-h-[95%] overflow-y-auto;
 }
 
 .modalHeader {
@@ -27,7 +27,7 @@
 }
 
 .input-style {
-  @apply block shadow leading-10 p-2 bg-[#faf9f6] w-full border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-0 focus:border-gray-400;
+  @apply block leading-10 p-2 bg-[#faf9f6] w-full border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-0 focus:border-gray-400;
 }
 
 .error {
@@ -39,9 +39,9 @@
 }
 
 .submitButton {
-  @apply px-4 py-2 bg-[#5badf5] text-white font-medium rounded-md hover:bg-[#4a90e2]
+  @apply px-4 py-2 bg-[#5badf5] text-white font-medium rounded-md hover:bg-[#4a90e2];
 }
 
 .disabled {
-  @apply px-4 py-2 bg-[#ebebeb] cursor-not-allowed font-medium rounded-md
+  @apply px-4 py-2 bg-[#ebebeb] cursor-not-allowed font-medium rounded-md;
 }

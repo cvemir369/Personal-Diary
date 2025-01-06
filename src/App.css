@@ -19,7 +19,7 @@
 /* Lighter Header and Footer styles for Light theme */
 .theme-light .navbar,
 .theme-light .footer {
-  @apply bg-[#e0e0e0] text-[#333333]; /* Lighter shade for background */
+  @apply bg-[#ffffff] text-[#333333]; /* Lighter shade for background */
 }
 
 /* Dark theme */

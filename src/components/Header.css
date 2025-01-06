@@ -8,7 +8,6 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 2px solid transparent;
   cursor: pointer;
   transition: transform 0.2s ease, border-color 0.3s ease;
 }
@@ -18,13 +17,13 @@
 }
 
 .theme-light {
-  background-color: #E8E1D3;
-  border: 2px solid #000000;
+  background-color: #f8f2ea;
+  border: 2px solid #f3f3f3;
 }
 
 .theme-dark {
   background-color: #000000;
-  border: 1px solid #ffffff;
+  border: 2px solid #464646;
 }
 
 .theme-colorful {
@@ -61,6 +60,6 @@
 }
 
 .change-name-btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }

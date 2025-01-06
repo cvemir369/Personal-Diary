@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Footer = () => {
+const Footer = ({ theme }) => {
   const [quote, setQuote] = useState(
     "A good diary is a story that only you know and can tell."
   );
@@ -26,26 +26,28 @@ const Footer = () => {
   };
 
   return (
-    <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
-      <div className="flex flex-col items-center justify-between h-full w-full">
-        <nav className="flex justify-center items-center space-x-4 mb-4 w-full">
-          <button
-            className="btn btn-ghost btn-sm rounded-btn text-indigo-600"
-            onClick={handleQuoteChange}
-          >
-            Inspire Me
-          </button>
-          <a className="btn btn-ghost btn-sm rounded-btn">Help & Support</a>
-          <a className="btn btn-ghost btn-sm rounded-btn">About Us</a>
-        </nav>
-        <p className="font-medium text-center my-4 max-w-md">"{quote}"</p>
-        <aside>
-          <p className="text-xs opacity-50 mt-4">
-            Created with ❤️ {new Date().getFullYear()} - All rights reserved.
-          </p>
-        </aside>
-      </div>
-    </footer>
+    <div className={theme}>
+      <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
+        <div className="flex flex-col items-center justify-between h-full w-full">
+          <nav className="flex justify-center items-center space-x-4 mb-4 w-full">
+            <button
+              className="btn btn-ghost btn-sm rounded-btn text-indigo-600"
+              onClick={handleQuoteChange}
+            >
+              Inspire Me
+            </button>
+            <a className="btn btn-ghost btn-sm rounded-btn">Help & Support</a>
+            <a className="btn btn-ghost btn-sm rounded-btn">About Us</a>
+          </nav>
+          <p className="font-medium text-center my-4 max-w-md">"{quote}"</p>
+          <aside>
+            <p className="text-xs mt-4">
+              Created with ❤️ {new Date().getFullYear()} - All rights reserved.
+            </p>
+          </aside>
+        </div>
+      </footer>
+    </div>
   );
 };
 
