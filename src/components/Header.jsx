@@ -4,6 +4,7 @@ import Logo from "./Logo";
 const Header = ({ setTheme, userName, openPopup, theme }) => {
   const changeTheme = (themeName) => {
     setTheme(themeName);
+    localStorage.setItem("theme", themeName);
   };
 
   return (
@@ -11,13 +12,16 @@ const Header = ({ setTheme, userName, openPopup, theme }) => {
       <div className="navbar justify-center">
         <div className="dropdown basis-1/3 justify-start">
           <div tabIndex={0}>
-            <a className="btn m-1 text-xl change-name-btn h-auto min-h-1">
+            <a className="btn text-xl change-name-btn h-auto min-h-1">
               Welcome {userName}
             </a>
           </div>
           <ul tabIndex={0} className="dropdown-content menu z-[1]">
             <li>
-              <button className="change-name-btn" onClick={openPopup}>
+              <button
+                className="btn text-sm change-name-btn h-auto"
+                onClick={openPopup}
+              >
                 Change Name
               </button>
             </li>

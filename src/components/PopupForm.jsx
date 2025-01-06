@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
 const PopupForm = ({ onStart }) => {
-  const [name, setName] = useState("");
-  const [theme, setTheme] = useState("theme-light");
+  const [name, setName] = useState(localStorage.getItem("userName") || "");
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || "theme-light"
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,8 +26,9 @@ const PopupForm = ({ onStart }) => {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              onClick={(e) => e.target.select()}
               className="input-style text-black"
-              placeholder="Enter your name"
+              placeholder={name ? name : "Enter your name"}
               required
             />
           </div>
@@ -38,9 +41,15 @@ const PopupForm = ({ onStart }) => {
               onChange={(e) => setTheme(e.target.value)}
               className="input-style text-black"
             >
-              <option value="theme-light">Light</option>
-              <option value="theme-dark">Dark</option>
-              <option value="theme-colorful">Colorful</option>
+              <option selected={theme} value="theme-light">
+                Light
+              </option>
+              <option selected={theme} value="theme-dark">
+                Dark
+              </option>
+              <option selected={theme} value="theme-colorful">
+                Colorful
+              </option>
             </select>
           </div>
           <button
