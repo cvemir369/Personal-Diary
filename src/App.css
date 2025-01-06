@@ -2,6 +2,10 @@
   @apply h-full pb-[100px] pt-[50px];
 }
 
+.pageContainer {
+  @apply flex flex-col h-screen;
+}
+
 /* Light theme */
 .theme-light .appContainer {
   @apply bg-white text-black;

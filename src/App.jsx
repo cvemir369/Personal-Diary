@@ -94,7 +94,7 @@ function App() {
         <PopupForm onStart={handlePopupStart} onClose={handleClose} />
       )}
       {!showPopup && (
-        <div className="flex flex-col">
+        <div className="pageContainer">
           <Header
             setTheme={setTheme}
             userName={userName}
